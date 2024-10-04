@@ -18,6 +18,9 @@ export default function Header() {
       <Link className={headerStyles["header-link"]} href="/">
         Home
       </Link>
+      <Link className={headerStyles["header-link"]} href="/forums">
+        Forums
+      </Link>
       {currentLogin ? (
         <>
           <Link className={headerStyles["header-link"]} href="/profile">

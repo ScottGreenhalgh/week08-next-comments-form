@@ -28,6 +28,10 @@
   text-align: center;
 }
 
+.reg-input-field::placeholder {
+  color: #00000069;
+}
+
 .reg-input-field:hover {
   filter: drop-shadow(0 0 5px #00000080);
 }

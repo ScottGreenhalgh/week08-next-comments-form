@@ -1,7 +1,7 @@
 import loginStyles from "@/app/styles/login.module.css";
 
 import { useState, useContext } from "react";
-//import { LoginContext } from "@/context/LoginProvider";
+import { LoginContext } from "@/context/LoginProvider";
 import { useRouter } from "next/navigation";
 
 const HOST = process.env.NEXT_PUBLIC_HOSTNAME;
@@ -10,7 +10,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //const { setCurrentLogin } = useContext(LoginContext);
+  const { setCurrentLogin } = useContext(LoginContext);
   const router = useRouter();
 
   const handleLogin = async (event) => {
@@ -30,7 +30,7 @@ export default function Login() {
         setUsername("");
         setPassword("");
         sessionStorage.setItem("authToken", responseData.token);
-        //setCurrentLogin(responseData.token);
+        setCurrentLogin(" ");
         console.log("Login successful", responseData.message);
         router.push("/profile");
       } else {
@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <div className={loginStyles["login-container"]}>
-      <h2 className={loginStyles["login-title"]}>Login</h2>
+      <h2 className={`text-3xl ${loginStyles["login-title"]}`}>Login</h2>
       <form
         className={loginStyles["login-form"]}
         aria-live="polite"

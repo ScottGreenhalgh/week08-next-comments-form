@@ -1,5 +1,6 @@
 import { LoginProvider } from "@/context/LoginProvider";
 import "./globals.css";
+import Header from "@/components/Header";
 
 import { Noto_Serif, Roboto, Lato, Play } from "next/font/google";
 
@@ -40,10 +41,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <LoginProvider>
-        <body
-          className={`${noto.variable} ${roboto.variable} ${lato.variable} ${play.variable} antialiased`}
-        >
-          {children}
+        <body>
+          <main
+            className={`${noto.variable} ${roboto.variable} ${lato.variable} ${play.variable} antialiased`}
+          >
+            <Header />
+            {children}
+          </main>
         </body>
       </LoginProvider>
     </html>

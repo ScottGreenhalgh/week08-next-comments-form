@@ -28,6 +28,10 @@
   text-align: center;
 }
 
+.edit-input-field::placeholder {
+  color: #00000069;
+}
+
 .displayname-field {
   width: 15rem;
 }

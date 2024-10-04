@@ -1,4 +1,4 @@
-.login-container {
+.forum-post-container {
   display: flex;
   flex-direction: column;
 
@@ -8,18 +8,18 @@
   padding: 2rem;
 }
 
-.login-title {
+.forum-post-title {
   margin-bottom: 2rem;
 }
 
-.login-form {
+.forum-post-form {
   display: flex;
   flex-direction: row;
 }
 
-.login-input-field {
+.forum-post-input-field {
   margin-right: 0.5rem;
-  width: 15rem;
+  width: 20rem;
   border-radius: 1rem;
   border: white solid 0px;
   filter: drop-shadow(0 0 3px #00000063);
@@ -28,11 +28,15 @@
   text-align: center;
 }
 
-.login-input-field::placeholder {
+.forum-post-input-field::placeholder {
   color: #00000069;
 }
 
-.login-input-field:hover {
+.displayname-field {
+  width: 15rem;
+}
+
+.forum-post-input-field:hover {
   filter: drop-shadow(0 0 5px #00000080);
 }
 
@@ -72,11 +76,11 @@
 }
 
 @media (max-width: 960px) {
-  .login-form {
+  .forum-post-form {
     flex-direction: column;
   }
 
-  .login-input-field {
+  .forum-post-input-field {
     width: 20rem;
     padding: 0.6rem 1.2rem;
     margin-bottom: 0.5rem;
@@ -84,7 +88,7 @@
 }
 
 @media (max-width: 401px) {
-  .login-input-field {
+  .forum-post-input-field {
     width: 14rem;
   }
 }

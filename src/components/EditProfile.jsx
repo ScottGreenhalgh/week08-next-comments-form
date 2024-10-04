@@ -56,7 +56,7 @@ export default function EditProfile() {
   return (
     <div className={editprofileStyles["edit-container"]}>
       <h2
-        className={editprofileStyles["edit-title"]}
+        className={`text-3xl ${editprofileStyles["edit-title"]}`}
       >{`Edit ${currentLogin}'s Profile`}</h2>
       <form
         className={editprofileStyles["edit-form"]}

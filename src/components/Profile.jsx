@@ -52,21 +52,21 @@ export default function Profile() {
       {error && <p className={profileStyles["error-message"]}>{error}</p>}
       <div className={profileStyles["profile-container"]}>
         <h2
-          className={profileStyles["profile-displayname"]}
+          className={`text-3xl ${profileStyles["profile-displayname"]}`}
         >{`${displayname}`}</h2>
         <p
           className={profileStyles["profile-username"]}
         >{`User: ${currentLogin}`}</p>
         <Image
           className={profileStyles["profile-image"]}
-          src={profile_img}
+          src={profile_img || "https://via.placeholder.com/150"}
           alt={`${currentLogin} profile image`}
           height={150}
           width={150}
         />
         <Image
           className={profileStyles["background-image"]}
-          src={background_url}
+          src={background_url || "https://via.placeholder.com/150"}
           alt={`${currentLogin} background image`}
           height={300}
           width={800}

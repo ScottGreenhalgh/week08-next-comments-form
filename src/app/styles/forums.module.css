@@ -1,0 +1,139 @@
+.forums-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  background-color: #8878a557;
+  border-radius: 5rem;
+
+  padding: 2rem;
+}
+
+.forums-create {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  background-color: #ad8d33;
+  border-radius: 50%;
+  border: white solid 0px;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.2s, filter 0.2s, border-color 0.25s;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #00000063);
+
+  padding: 0.25rem 0.85rem 0.5rem 0.85rem;
+  cursor: pointer;
+}
+
+.forums-create:active {
+  background-color: #5437d4;
+  color: white;
+}
+.forums-create:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px #00000080);
+}
+
+.forums-create:focus,
+.forums-create:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.posts-container {
+  width: 70vw;
+  height: 70vh;
+}
+
+.individual-post {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+
+  background-color: #2e29387c;
+  border-radius: 5rem;
+
+  padding: 0.5rem 2rem 2rem 2rem;
+  margin: 0.5rem;
+}
+
+.forums-post-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forums-post-sender {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 2rem;
+}
+
+.forums-post-date {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+}
+
+/* Dropdown */
+
+.dropdown-button {
+  display: flex;
+  text-align: left;
+
+  background-color: #ad8d33;
+  border-radius: 50%;
+  border: white solid 0px;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.2s, filter 0.2s, border-color 0.25s;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #00000063);
+
+  padding: 0.25rem 0.85rem 0.5rem 0.85rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: -1.6rem;
+  left: 2rem;
+
+  background-color: #8878a557;
+  border-radius: 1rem;
+  padding: 0.2rem;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a:hover {
+  background-color: #2e29387c;
+  border-radius: 1rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .forums-post-sender {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .forums-post-date {
+    display: none;
+  }
+}

@@ -42,7 +42,9 @@ export function LoginProvider({ children }) {
   }, [fetchSession]);
 
   return (
-    <LoginContext.Provider value={{ currentLogin, clearSession, fetchSession }}>
+    <LoginContext.Provider
+      value={{ currentLogin, clearSession, fetchSession, setCurrentLogin }}
+    >
       {children}
     </LoginContext.Provider>
   );

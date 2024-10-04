@@ -18,7 +18,7 @@ export default function Register() {
       setError("Registration failed: Passwords do not match");
       return;
     }
-    setError("");
+    //setError("");
     try {
       const response = await fetch(`${HOST}/api/register`, {
         method: "POST",
@@ -47,7 +47,7 @@ export default function Register() {
 
   return (
     <div className={registerStyles["reg-container"]}>
-      <h2 className={registerStyles["reg-title"]}>Register</h2>
+      <h2 className={`text-3xl ${registerStyles["reg-title"]}`}>Register</h2>
       <form
         className={registerStyles["reg-form"]}
         aria-live="polite"
