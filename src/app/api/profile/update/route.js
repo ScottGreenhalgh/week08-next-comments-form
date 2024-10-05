@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { connect } from "../../../utils/connect.js";
+import { connect } from "@/utils/connect";
 
 const db = connect();
 
