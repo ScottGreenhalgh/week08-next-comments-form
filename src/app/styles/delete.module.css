@@ -1,0 +1,27 @@
+.delete-button {
+  background-color: #ad8d33;
+  border-radius: 2rem;
+  border: white solid 0px;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.2s, filter 0.2s, border-color 0.25s;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #00000063);
+
+  padding: 0.25rem 0.85rem 0.5rem 0.85rem;
+  cursor: pointer;
+}
+
+.delete-button:active {
+  background-color: #5437d4;
+  color: white;
+}
+.delete-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px #00000080);
+}
+
+.delete-button:focus,
+.delete-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

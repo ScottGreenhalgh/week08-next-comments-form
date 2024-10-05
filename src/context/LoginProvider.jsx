@@ -1,10 +1,12 @@
 "use client";
 import { createContext, useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 export const LoginContext = createContext();
 
 export function LoginProvider({ children }) {
   const [currentLogin, setCurrentLogin] = useState("");
+  const router = useRouter();
 
   const fetchSession = useCallback(async () => {
     const token = sessionStorage.getItem("authToken");
@@ -23,6 +25,7 @@ export function LoginProvider({ children }) {
           console.log("Current login set to: ", data.username);
         } else {
           console.error("Invalid or expired token ", data.error);
+          router.push("/login");
           clearSession();
         }
       } catch (error) {
@@ -30,7 +33,7 @@ export function LoginProvider({ children }) {
         clearSession();
       }
     }
-  }, []);
+  }, [router]);
 
   const clearSession = () => {
     sessionStorage.removeItem("authToken");

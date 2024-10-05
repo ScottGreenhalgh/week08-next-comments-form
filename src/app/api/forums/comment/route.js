@@ -21,7 +21,7 @@ export const POST = async (request) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const username = decoded.username;
 
-    const slug = req.headers.get("slug");
+    const slug = request.headers.get("slug");
     const postQuery = await db.query(
       `SELECT id FROM forum_posts WHERE LOWER(title) = $1`,
       [slug.replace(/-/g, " ")]
@@ -52,7 +52,7 @@ export const POST = async (request) => {
     const { id: user_id, displayname } = userQuery.rows[0];
 
     const insertComment = await db.query(
-      `INSERT INTO comments (user_id, username post_id, comment) VALUES ($1, $2, $3, $4) RETURNING *`,
+      `INSERT INTO comments (user_id, username, post_id, comment) VALUES ($1, $2, $3, $4) RETURNING *`,
       [user_id, displayname, postId, comment]
     );
 

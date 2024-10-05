@@ -1,0 +1,73 @@
+.forum-comment-container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #2e29387c;
+  border-radius: 5rem;
+
+  padding: 2rem;
+}
+
+.forum-comment-title {
+  margin-bottom: 2rem;
+}
+
+.forum-comment-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.forum-comment-input-field {
+  margin-right: 0.5rem;
+  width: 15rem;
+  border-radius: 1rem;
+  border: white solid 0px;
+  filter: drop-shadow(0 0 3px #00000063);
+  color: #000;
+  background-color: #a89ae6;
+  text-align: center;
+}
+
+.forum-comment-input-field::placeholder {
+  color: #00000069;
+}
+
+.forum-comment-input-field:hover {
+  filter: drop-shadow(0 0 5px #00000080);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.submit-button {
+  background-color: #ad8d33;
+  border-radius: 25px;
+  border: white solid 0px;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.2s, filter 0.2s, border-color 0.25s;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #00000063);
+
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.submit-button:active {
+  background-color: #5437d4;
+  color: white;
+}
+.submit-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px #00000080);
+}
+
+.submit-button:focus,
+.submit-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

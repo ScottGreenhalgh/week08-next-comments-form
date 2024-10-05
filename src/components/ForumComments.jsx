@@ -2,12 +2,14 @@
 
 import forumCommentStyles from "@/app/styles/forumcomment.module.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
+import { LoginContext } from "@/context/LoginProvider";
 
 const HOST = process.env.NEXT_PUBLIC_HOSTNAME;
 
-export default function ForumComment() {
+export default function ForumComment({ slug }) {
+  const { currentLogin } = useContext(LoginContext);
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -16,25 +18,24 @@ export default function ForumComment() {
     event.preventDefault();
     const token = sessionStorage.getItem("authToken");
     setError("");
-    if (error) {
-      return;
-    }
+
     try {
       const response = await fetch(`${HOST}/api/forums/comment`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
+          slug: slug,
         },
-        body: JSON.stringify({ title, comment }),
+        body: JSON.stringify({ comment }),
       });
       const responseData = await response.json();
       console.log(`From the server (forum-comment): `, responseData);
       if (response.ok) {
-        const slug = responseData.title.toLowerCase().replace(/ /g, "-");
         setComment("");
         console.log("Comment successful", responseData.message);
-        router.push(`/forums/p/${slug}`);
+        //router.push(`/forums/p/${slug}`);
+        router.refresh();
       } else {
         console.log("Commenting failed", responseData.error);
         setError(`Commenting failed: ${responseData.error}`);
@@ -45,10 +46,19 @@ export default function ForumComment() {
     }
   };
 
+  // if not logged in the form won't render
+  if (!currentLogin) {
+    return (
+      <div className={forumCommentStyles["forum-comment-container"]}>
+        <p>Login to leave a comment</p>
+      </div>
+    );
+  }
+
   return (
     <div className={forumCommentStyles["forum-comment-container"]}>
       <h2 className={`text-3xl ${forumCommentStyles["forum-comment-title"]}`}>
-        Make a comment
+        Leave a comment
       </h2>
       <form
         className={forumCommentStyles["forum-comment-form"]}

@@ -29,6 +29,7 @@ export default function ForumPost() {
     const token = sessionStorage.getItem("authToken");
     setError("");
     if (error) {
+      // prevent form submit if error
       return;
     }
     try {
