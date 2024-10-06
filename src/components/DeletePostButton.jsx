@@ -2,12 +2,10 @@
 
 import delStyle from "@/app/styles/delete.module.css";
 
-import { useContext, useState, useEffect } from "react";
-import { LoginContext } from "@/context/LoginProvider";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function DeletePostButton({ slug, postCreatorId }) {
-  const { currentLogin } = useContext(LoginContext); // Get the current logged-in user
   const [isDeleting, setIsDeleting] = useState(false);
   const [user_id, setUser_id] = useState("");
   const [error, setError] = useState(null);

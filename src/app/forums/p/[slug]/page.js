@@ -4,6 +4,7 @@ import ForumComment from "@/components/ForumComments";
 import { connect } from "@/utils/connect";
 import Link from "next/link";
 import DeletePostButton from "@/components/DeletePostButton";
+import LikeDislikeButton from "@/components/LikeDislikeButton";
 
 export default async function PostPage({ params, searchParams }) {
   const db = connect();
@@ -48,6 +49,11 @@ export default async function PostPage({ params, searchParams }) {
           Posted by: {post.username}
         </p>
         <p className={forumSlugStyle["forums-post-date"]}>{post.post}</p>
+        <LikeDislikeButton
+          postId={post.id}
+          initialLikes={post.likes}
+          initialDislikes={post.dislikes}
+        />
       </div>
       {/* Render comments */}
       <div>
@@ -94,6 +100,11 @@ export default async function PostPage({ params, searchParams }) {
                   <p className={forumSlugStyle["forums-comment-date"]}>
                     {formattedDate}
                   </p>
+                  <LikeDislikeButton
+                    commentId={comment.id}
+                    initialLikes={comment.likes}
+                    initialDislikes={comment.dislikes}
+                  />
                 </div>
               );
             })}

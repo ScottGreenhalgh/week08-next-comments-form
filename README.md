@@ -46,6 +46,43 @@ await db.query(`SELECT id FROM forum_posts WHERE LOWER(title) = $1`, [
 
 I'm thinking of modifying these parameters, or adding an additonal check to see if the title already exists in the table before post submission. I'll probably explore some options before completing this project if I have time, but if I can't think of anything I would love some possible suggestions. I did notice after that .toLowerCase() was redundant becuase I'm using LOWER(title) in the query so I later removed that.
 
+### Likes/Dislikes
+
+Going into making a likes and dislikes system in the past it was a relatively easy process. When button pressed add token to local storage saying it has happened. If you like again with the token, remove the token and remove the like. Based on this, I went into this segment with a similar approach, except this time I wasn't putting the likes on a single post, for some reason I decided to be fancy and make a relational table to distinguish between whether it's a like, dislike, on a comment or a post. Most importantly though, this table would track the user_id of the person user who clicked the like button. Similar to my previous implamentation, it would track this user_id to see if the like button has already been pressed and remove the entry if so, meaning the next time a check is made to that table for a user_id that matches that comment/post id, it will not return anything, allowing the like to update. All that sounded good in theory. Yes it's much more complicated than what I was doing before but sounded simple in my head, but then it came down to actually making it.
+
+I started with a likeDislikeButton.jsx component and firstly needed to get the user_id in here. So the first thing I did was grab the same logic I used on the delete button and copy it over here. Next I needed to query an endpoint at the server to find the next action that should be taken. I made a request to a POST endpoint on the server and made a query to my database to dictate the action.
+
+Next I made 2 seperate handle click functions, one for each button. From here I would take the previously devised action and pass it along with the userid and comment/postid if it's present. Over to the api/likes_dislikes I made two distinct sections, one to handle an intance where the action is a like/dislike, and another where the action is unlike or undislike. I would then bundle this data back up and send it back to the client. I spent a good long while trying to fix this segment. This was because my two if statements were running into eachother and the action was triggering the condition of for both statements. In the end I just wrote a check for either action, and then made my second if statement an else if to prevent the weird runoff:
+
+    ```js
+    const isLike = action === "like" || action === "unlike";
+    const isDislike = action === "dislike" || action === "undislike";
+    ```
+
+This is where things fell apart. Back at my POST endpoint, I spent a good few hours trying to debug the reason why my action would always output as null regardless if a like or dislike had occured. I couldn't see where this was happening so I logged literally everything, but all the values appeared to align with what I imagined. I then copied the query that I was making creatomg and logged it to console. It looked basically how I expected. I then copied this to supabase query editor and it output the rows, but the moment I run it on my server it would output this:
+
+```
+Result {
+  command: 'SELECT',
+  rowCount: 0,
+  oid: null,
+  rows: [],
+  fields: [],
+}
+```
+
+No rows returned for absolutely no reason, at least I couldn't find the reason. The original query looked like this:
+
+```js
+//Fetch the user's current like/dislike status
+const existingAction = await db.query(
+  `SELECT is_like FROM likes_dislikes WHERE user_id = $1 AND $2 = $3`,
+  [user_id, postId ? "post_id" : "comment_id", postId ? postId : commentId]
+);
+```
+
+Maybe it was a problem with how I was trying to do an inline if statement inside the query parameters. Either way, after making variables for each of the parameters and then using string literals to plug the data, it seemed to work. I don't think this is as elegant as it could be, but seems to work. My only concern is I'm now not sanatising the inputs. Now I've found a working solution to this issue, I can probably rewrite this later.
+
 ## Requirements
 
 For this project the requirements completed were:
@@ -67,3 +104,5 @@ For this project the requirements completed were:
 - Refactored login system to next
 
 - Integrating posts, comments and delete functionality with login credentials.
+
+- Likes/Dislikes for posts and comments
