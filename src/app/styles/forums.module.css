@@ -68,18 +68,24 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  font-family: var(--font-roboto);
 }
 
 .forums-post-sender {
   position: absolute;
   bottom: 0.5rem;
   left: 2rem;
+
+  font-family: var(--font-lato);
 }
 
 .forums-post-date {
   position: absolute;
   bottom: 0.5rem;
   right: 2rem;
+
+  font-family: var(--font-lato);
 }
 
 /* Dropdown */

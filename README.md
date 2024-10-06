@@ -54,10 +54,10 @@ I started with a likeDislikeButton.jsx component and firstly needed to get the u
 
 Next I made 2 seperate handle click functions, one for each button. From here I would take the previously devised action and pass it along with the userid and comment/postid if it's present. Over to the api/likes_dislikes I made two distinct sections, one to handle an intance where the action is a like/dislike, and another where the action is unlike or undislike. I would then bundle this data back up and send it back to the client. I spent a good long while trying to fix this segment. This was because my two if statements were running into eachother and the action was triggering the condition of for both statements. In the end I just wrote a check for either action, and then made my second if statement an else if to prevent the weird runoff:
 
-    ```js
-    const isLike = action === "like" || action === "unlike";
-    const isDislike = action === "dislike" || action === "undislike";
-    ```
+```js
+const isLike = action === "like" || action === "unlike";
+const isDislike = action === "dislike" || action === "undislike";
+```
 
 This is where things fell apart. Back at my POST endpoint, I spent a good few hours trying to debug the reason why my action would always output as null regardless if a like or dislike had occured. I couldn't see where this was happening so I logged literally everything, but all the values appeared to align with what I imagined. I then copied the query that I was making creatomg and logged it to console. It looked basically how I expected. I then copied this to supabase query editor and it output the rows, but the moment I run it on my server it would output this:
 
@@ -83,6 +83,10 @@ const existingAction = await db.query(
 
 Maybe it was a problem with how I was trying to do an inline if statement inside the query parameters. Either way, after making variables for each of the parameters and then using string literals to plug the data, it seemed to work. I don't think this is as elegant as it could be, but seems to work. My only concern is I'm now not sanatising the inputs. Now I've found a working solution to this issue, I can probably rewrite this later.
 
+### Styling
+
+For styling I imported me existing styles styles from my past projects and modified it slightly. Previously the way I applied the background art to the page wasn't ideal so this time I made sure to apply it to the body and stretch it to fit. I added font changes using the layout.js to import them and assign them to variables which I can use elsewhere. I also utilised some tailwind css to apply text sizing and text colours to some elements. From here I styled the div containers for each element to act as a container. I then did my best to position the elements on the page where they are intuitive, but the layout overall is faily barebones and not entirely refined.
+
 ## Requirements
 
 For this project the requirements completed were:
@@ -106,3 +110,5 @@ For this project the requirements completed were:
 - Integrating posts, comments and delete functionality with login credentials.
 
 - Likes/Dislikes for posts and comments
+
+- Utilised tailwind and font imports

@@ -17,7 +17,7 @@ export default async function PostPage({ params, searchParams }) {
   );
 
   if (postQuery.rows.length === 0) {
-    return <p>Post not found</p>;
+    return <p>404 | Post not found</p>;
   }
 
   const post = postQuery.rows[0];

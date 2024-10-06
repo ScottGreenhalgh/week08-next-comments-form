@@ -17,6 +17,8 @@
   overflow: auto;
 }
 
+/* posts  */
+
 .post-container {
   display: flex;
   flex-direction: column;
@@ -30,6 +32,14 @@
   margin: 0.5rem;
 }
 
+.forums-post-title {
+  font-family: var(--font-roboto);
+}
+
+.forums-post-date {
+  font-family: var(--font-lato);
+}
+
 .del-button {
   position: absolute;
   top: 1rem;
@@ -37,6 +47,8 @@
 
   border-radius: 5rem;
   background-color: #ad8d33;
+
+  font-family: var(--font-play);
 }
 
 /* comments */
@@ -58,12 +70,16 @@
   position: absolute;
   bottom: 0.5rem;
   left: 5rem;
+
+  font-family: var(--font-lato);
 }
 
 .forums-comment-date {
   position: absolute;
   bottom: 0.5rem;
   right: 2rem;
+
+  font-family: var(--font-lato);
 }
 
 .forums-no-comments {
