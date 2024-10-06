@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, act } from "react";
+import likeDislikeStyles from "@/app/styles/likedislike.module.css";
+
+import { useState, useEffect } from "react";
 
 export default function LikeDislikeButton({
   postId,
@@ -84,11 +86,21 @@ export default function LikeDislikeButton({
 
   return (
     <div>
-      {error && <span className="error-message">{error}</span>}
-      <button onClick={handleLike} disabled={!userId}>
+      {error && (
+        <span className={likeDislikeStyles["error-message"]}>{error}</span>
+      )}
+      <button
+        className={likeDislikeStyles["like-button"]}
+        onClick={handleLike}
+        disabled={!userId}
+      >
         👍 {likes}
       </button>
-      <button onClick={handleDislike} disabled={!userId}>
+      <button
+        className={likeDislikeStyles["dislike-button"]}
+        onClick={handleDislike}
+        disabled={!userId}
+      >
         👎 {dislikes}
       </button>
     </div>

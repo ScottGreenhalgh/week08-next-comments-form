@@ -45,10 +45,10 @@ export default async function PostPage({ params, searchParams }) {
         <h1 className={`text-amber-500 ${forumSlugStyle["forums-post-title"]}`}>
           {post.title}
         </h1>
+        <p className={forumSlugStyle["forums-post-date"]}>{post.post}</p>
         <p className={forumSlugStyle["forums-post-sender"]}>
           Posted by: {post.username}
         </p>
-        <p className={forumSlugStyle["forums-post-date"]}>{post.post}</p>
         <LikeDislikeButton
           postId={post.id}
           initialLikes={post.likes}

@@ -1,0 +1,43 @@
+.like-button {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 2.66rem;
+  background-color: #3cb673;
+  font-size: 1rem;
+  color: white;
+  border: 0px outset white;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5em 0.2rem 0.5rem;
+  filter: drop-shadow(0 0 3px #00000063);
+}
+
+.dislike-button {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 0.33rem;
+  background-color: #af2929;
+  font-size: 1rem;
+  color: white;
+  border: 0px outset white;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5em 0.2rem 0.5rem;
+}
+
+.like-button,
+.dislike-button {
+  cursor: pointer;
+  transition: transform 0.2s;
+  filter: drop-shadow(0 0 3px #00000063);
+  margin-bottom: 0.5rem;
+}
+.like-button:hover,
+.dislike-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px #97851c9d);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
